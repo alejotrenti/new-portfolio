@@ -88,7 +88,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
           </span>
         </div>
       </div>
-      <div className="absolute z-10 w-full lg:h-[800px] ">
+      <div className="absolute z-10 w-full h-screen lg:h-3/4 ">
           <Headset />
         </div>
     </Bounded>

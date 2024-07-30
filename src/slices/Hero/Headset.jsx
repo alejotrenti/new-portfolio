@@ -5,6 +5,21 @@ import { Suspense, useEffect, useRef, useState, useCallback } from "react";
 import { gsap } from "gsap";
 
 export default function Headset() {
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth <= 768); // Puedes ajustar el ancho según tus necesidades
+        };
+
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+
+        return () => {
+            window.removeEventListener('resize', checkMobile);
+        };
+    }, []);
+
     return (
         <div className="w-full h-full flex justify-center items-center">
             <Canvas 
@@ -14,9 +29,15 @@ export default function Headset() {
                 camera={{ position: [0, 0, 20], fov: 20, near: 1, far: 40 }}
             >
                 <Suspense fallback={null}>
-                    <Headphones2 />
-                    <Keyboard />
-                    <Mouse />
+                    {isMobile ? (
+                        <Keyboard />
+                    ) : (
+                        <>
+                            <Headphones2 />
+                            <Keyboard />
+                            <Mouse />
+                        </>
+                    )}
                     <Environment preset="studio" />
                 </Suspense>
             </Canvas>
