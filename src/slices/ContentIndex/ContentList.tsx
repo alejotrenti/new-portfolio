@@ -72,12 +72,12 @@ export default function ContentList({
       let ctx = gsap.context(() => {
         // Animate the image holder
         if (currentItem !== null) {
-          const maxY = window.scrollY + window.innerHeight - 350;
-          const maxX = window.innerWidth - 250;
+          const maxY = window.scrollY + window.innerHeight - 250; // Adjusted for new height
+          const maxX = window.innerWidth - 400; // Adjusted for new width
 
           gsap.to(revealRef.current, {
-            x: gsap.utils.clamp(0, maxX, mousePos.x - 110),
-            y: gsap.utils.clamp(0, maxY, mousePos.y - 160),
+            x: gsap.utils.clamp(0, maxX, mousePos.x - 200), // Adjusted for new width
+            y: gsap.utils.clamp(0, maxY, mousePos.y - 125), // Adjusted for new height
             rotation: speed * (mousePos.x > lastMousePos.current.x ? 1 : -1), // Apply rotation based on speed and direction
             ease: "back.out(2)",
             duration: 1.3,
@@ -112,13 +112,13 @@ export default function ContentList({
   };
 
   const contentImages = items.map((item) => {
-    const image = isFilled.image(item.data.meta_image)
-      ? item.data.meta_image
+    const image = isFilled.image(item.data.hover_image)
+      ? item.data.hover_image
       : fallbackItemImage;
     return asImageSrc(image, {
       fit: "crop",
-      w: 220,
-      h: 320,
+      w: 400, // Adjusted for horizontal rectangle
+      h: 250, // Adjusted for horizontal rectangle
       exp: -10,
     });
   });
@@ -142,6 +142,7 @@ export default function ContentList({
         {items.map((post, index) => (
           <li
             key={index}
+            ref={(el) => (itemsRef.current[index] = el)}
             onMouseEnter={() => onMouseEnter(index)}
             className="list-item opacity-0"
           >
@@ -169,7 +170,7 @@ export default function ContentList({
 
         {/* Hover element */}
         <div
-          className="hover-reveal pointer-events-none absolute left-0 top-0 -z-10 h-[320px] w-[220px] rounded-lg bg-cover bg-center opacity-0 transition-[background] duration-300"
+          className="hover-reveal pointer-events-none absolute left-0 top-0 -z-10 h-[250px] w-[400px] rounded-lg bg-contain bg-center opacity-0 transition-[background] duration-300"
           style={{
             backgroundImage:
               currentItem !== null ? `url(${contentImages[currentItem]})` : "",
@@ -180,3 +181,4 @@ export default function ContentList({
     </>
   );
 }
+

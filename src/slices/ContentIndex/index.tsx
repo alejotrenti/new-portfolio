@@ -2,7 +2,7 @@ import { Content, isFilled } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { createClient } from "@/prismicio";
 import ContentList from "./ContentList";
-import Bounded from "@/components/Bounded";
+import Bounded2 from "@/components/Bounded2";
 import Heading from "@/components/Heading";
 /**
  * Props for `BlogPostIndex`.
@@ -23,7 +23,7 @@ const BlogPostIndex = async ({
   const items = slice.primary.content_type === "Blog" ? blogPosts : projects;
 
   return (
-    <Bounded
+    <Bounded2
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
@@ -41,7 +41,7 @@ const BlogPostIndex = async ({
         viewMoreText={slice.primary.view_more_text}
         fallbackItemImage={slice.primary.fallback_item_image}
       />
-    </Bounded>
+    </Bounded2>
   );
 };
 

@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .btn2 {
     position: relative;
     display: inline-block;

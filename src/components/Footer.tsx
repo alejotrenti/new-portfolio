@@ -16,7 +16,7 @@ export default async function Footer() {
         <div className="name flex flex-col items-center justify-center gap-x-4 gap-y-2 sm:flex-row sm:justify-self-start">
           <Link
             href="/"
-            className="text-xl font-extrabold tracking-tighter text-slate-100 transition-colors duration-150 hover:text-yellow-400"
+            className="text-xl font-extrabold tracking-wider text-slate-100 transition-colors duration-150 hover:text-yellow-400 "
           >
             {settings.data.name}
           </Link>
@@ -37,7 +37,7 @@ export default async function Footer() {
                 <li>
                   <PrismicNextLink
                     className={clsx(
-                      "group relative block overflow-hidden  rounded px-3 py-1 text-base font-bold text-slate-100 transition-colors duration-150 hover:hover:text-yellow-400",
+                      "group relative block overflow-hidden  rounded px-3 py-1 text-base font-medium text-slate-100 transition-colors duration-150 hover:hover:text-yellow-400  tracking-wider",
                     )}
                     field={link}
                   >
@@ -70,7 +70,7 @@ export default async function Footer() {
             <PrismicNextLink
               field={settings.data.instagram_link}
               className="p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-yellow-400"
-              aria-label={settings.data.name + " on Twitter"}
+              aria-label={settings.data.name + " on Instagram"}
             >
               <FaTwitter />
             </PrismicNextLink>
