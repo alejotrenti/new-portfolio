@@ -40,7 +40,7 @@ export const Info = () => {
                     Always looking forward to chat with you!
                 </h1>
                 <button>
-                    <a href="#" className="btn2">
+                    <a href="mailto:aletrenti@outlook.com" className="btn2">
                         <span className="spn2 inline-flex gap-x-2 items-center">Lets talk!<GoArrowRight /></span>
                     </a>
                 </button>
